@@ -1,0 +1,71 @@
+@media (max-width: 900px) {
+  .navbar {
+    display: none;
+  }
+  
+
+/* === Фон — через fixed-див === */
+    body::before {
+        height: 120dvh;
+    }
+    .right_page1 {
+        display: none;
+    }
+    .left_page1 {
+        width: 100vw;
+    }
+    .page1 .textBlock {  
+        font-size: large;
+    }
+    .gamepad {
+        width: 250px;
+    }
+    #marker {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top: -50px;
+        left: -50px;
+        animation: bounce 1.5s ease-in-out infinite;
+    }
+    h2 {
+        left: 0;
+    }
+    #mobile_logo {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        color: aliceblue;
+        justify-content: space-around
+    }
+    #mobile_logo img {
+        width: 120px;
+        height: 120px;
+    }
+    .page2 {
+        padding: 4px;
+        top: 50%;
+        height: 90dvh;
+    }
+    .page2 h3 {
+        font-size: larger;
+    }
+    .page2 .textBlock {
+        width: 95%;
+    }
+    .page2 p {
+        font-size: medium;
+    }
+    #rocket {
+        display: none;
+    }
+    h1 {
+       animation: blink-caret .75s step-end infinite;
+    }
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: orange; }
+    }
+}

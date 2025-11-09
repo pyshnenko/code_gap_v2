@@ -1,0 +1,365 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-y: auto;
+  min-height: 100vh;
+  position: relative;
+}
+#mobile_logo {
+  display: none;
+}
+.left_page1 {
+  width: 45%; 
+  height: 100vh;
+}
+/* === Фон — через fixed-див === */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  background: linear-gradient(to bottom, white, #ceeeb0);
+  z-index: -2;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Пространство для прокрутки */
+.content-spacer {
+  height: 2000px;
+}
+
+/* Анимация навбара */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(29, 48, 34, 0.5);
+  padding: 4px 8px;
+  box-shadow: 0 2px 5px rgba(29, 48, 34, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: 500;
+  font-size: x-large;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #013831;
+}
+
+.phoneButton {
+  color: #013831;
+  font-size: large;
+  background-color: #4ada4f;
+  padding: 0px 24px;
+  position: relative;
+  left: -2rem;
+  border-radius: 12px;
+}
+
+/* Page1 — уезжает */
+.page1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: row;
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out, backdrop-filter 0.1s ease-out;
+  pointer-events: none;
+  opacity: 1;
+  backdrop-filter: blur(0px);
+}
+
+/* Page2 — въезжает */
+.page2 {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  height: 80dvh;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+
+  /* Внешний вид слайда */
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  color: #013831;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0;
+
+  /* Плавные переходы */
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+              opacity 0.6s ease;
+  pointer-events: none;
+
+  /* Центрирование текста */
+  text-align: center;
+}
+
+.content-spacer {
+  height: 400dvh; /* Даёт пространство для скролла */
+}
+
+/* Активный слайд — плавно въезжает снизу и увеличивается */
+.page2.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1); /* Масштаб до нормального */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+/* Стили для текста внутри слайда */
+.page2 h1,
+.page2 p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page2.show h1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.page2.show p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.page2.show p:nth-of-type(2) {
+  transition-delay: 0.5s;
+}
+
+/*.page2 h1,
+.page2 p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}*/
+
+.page2 p {
+  transition-delay: 0.2s;
+}
+
+.page2.show h1,
+.page2.show p {
+  opacity: 1;
+  transform: translateY(0);
+}
+.left_page1 {
+  background: linear-gradient(135deg, #030503, #2b4833);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@keyframes swing {
+  0% {
+    transform: rotate(-12deg);
+  }
+  25% {
+    transform: rotate(12deg);
+  }
+  50% {
+    transform: rotate(-12deg);
+  }
+  75% {
+    transform: rotate(12deg);
+  }
+  100% {
+    transform: rotate(-12deg);
+  }
+}
+.gamepad {
+  position: absolute;
+  width: 350px;
+  left: 40vw;
+  bottom: -10vh;
+  animation: swing 20s ease-in-out infinite;
+}
+.page1 .textBlock {  
+  display: flex;
+  font-family: "Ubuntu", sans-serif;
+  color: #9af8e1;
+  font-size: 40px;
+  line-height: 1.5;
+
+}
+.page2 .textBlock {
+  font-size: x-large;
+  width: 80%;
+}
+h2 {
+  font-family: "Ubuntu", sans-serif;
+  position: relative;
+  left: 100px;
+}
+h3 {
+  font-size: xx-large;
+  font-family: "Ubuntu", sans-serif;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+#marker {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top: -100px;
+    left: -100px;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+.left_page1 p {
+  font-family: "Ubuntu", sans-serif;
+    color: #d1dc1d;
+    text-align: left;
+    width: 75%;
+    font-size: x-large;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 24px;  
+  display: flex;
+  justify-content: center;
+}
+
+.pageHeadDiv {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.pageHeadDiv img {
+  max-width: 25%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.priory {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+.priory div {
+  padding: 16px;
+  max-width: 300px;
+}
+.priory img {
+  height: 200px
+}
+#page3 .card {
+  flex-direction: column;
+}
+
+@keyframes levitate {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.levitate {
+  display: inline-block;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+.levitate:hover {
+  animation: levitate 4s ease-in-out infinite;
+}
+
+.swing {  
+  animation: swing 20s ease-in-out infinite;
+}
+
+h5 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: large;
+}
+#robot{
+  width: 100%;
+  height: 600px;
+  position: absolute;
+}
+
+.lessons {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-items: center;
+}
+.lessons img {
+  width: 200px;
+}
+.lessons h5 {
+  line-height: 1.2;
+  font-size: x-large;
+
+}
+
+#page4 h3 {
+  margin-top: 0;
+}
+
+#page4 .card {
+  justify-content: space-around
+}

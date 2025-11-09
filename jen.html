@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Code_Gap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./jen/pacman.css" />
+  <link rel="stylesheet" href="./jen/style.css" />
+  <link rel="stylesheet" href="./jen/mobStyle.css" />
+  <link rel="stylesheet" href="./jen/packman-mobile.css" />
+</head>
+<body>
+  <!-- Навбар -->
+  <nav class="navbar">
+    <div style="display: inline-flex; align-items: center;">
+      <img src="./jen/logo.png" alt="Логотип" class="logo" />
+      <ul class="nav-links">
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#courses">Курсы</a></li>
+        <li><a href="#team">Команда</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="phoneButton">
+      <p style="margin: 12px;">+7 995 757 87 46</p>
+    </div>
+  </nav>
+
+  <!-- Главный экран -->
+  <div class="page1" id="page1">
+    <div id="mobile_logo">
+      <img src="./jen/logo.png" />
+      <h1>&lt;CODE_GAP&gt;</h1>
+    </div>
+    <div class="left_page1">
+      <div class="textBlock">
+        <h2>
+          Академия <br> программирования
+        </h2>
+        <img id="marker" src="./jen/heart.png.webp" />
+      </div>
+      <p>Для детей от 8 до 16 лет</p>
+    </div>
+    <div class="right_page1" style="width: 55%; height: 100vh; overflow: hidden;">
+      <img 
+        src="./jen/centralImg.webp" 
+        alt="Центральное изображение" 
+        onerror="this.onerror=null; this.src='./jen/centralImg.jpg';" 
+        style="width: 100%; height: 100%; object-fit: cover;"
+      >
+    </div>
+    <img class="gamepad" src="./jen/Gamepad_better.png" />
+  </div>
+
+  <!-- Основной контент -->
+  <div class="page2" id="page2">
+    <div class="card">
+      <div class="textBlock">
+        <div class="pageHeadDiv">
+          <img src="./jen/code2.png" />
+          <h3>Кто нас вдохновляет<br> и почему мы делаем игры?</h3>
+          <img id="rocket" src="./jen/rocket_2.png.webp" />
+        </div>
+        <p>
+          Основатели крупнейших IT компаний (Билл Гейтс, Марк Цукерберг и др.) начинали свой путь именно с игровой разработки.
+        </p>
+        <p>Создание игр - это увлекательный и творческий процесс, который развивает навыки решения сложных задач и логическое мышление. Каждый игровой проект заставляет продумывать новые механики, алгоритмы и пути решения проблем. Это лучшее направление для знакомства вашего ребенка с программированием!</p>
+      </div>
+      <div class="pacman">
+        <div class="pacman-top"></div>
+        <div class="pacman-bottom"></div>
+        <div class="feed"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page2" id="page3">
+    <div class="card">
+      <h3>Наши приоритеты</h3>
+      <div class="priory">
+        <div>
+          <img class="levitate" src="./jen/guy-programming.png" />
+          <h5>Преподаватели, которые вдохновляют</h5>
+          <p>
+            Их любовь и знание предмета мотивируют учеников покорять новые вершины
+          </p>
+        </div>
+        <div>
+          <img class="levitate" src="./jen/smartboy.png" />
+          <h5>Обучение практическим навыкам</h5>
+          <p>
+            Наши курсы основаны на современных британских курсах по разработке игр от gamedev.tv
+          </p>
+        </div>
+        <div>
+          <img class="levitate" src="./jen/Group.png" />
+          <h5>Работа в мини-группах или индивидуально</h5>
+          <p>
+            Мы работаем только в мини-группах до 8 учеников, чтобы уделить внимание каждому
+          </p>
+        </div>
+        <div>
+          <img class="levitate" src="./jen/camera.png" />
+          <h5>Видеоуроки для закрепления материала</h5>
+          <p>
+            После каждого занятия мы высылаем видеоуроки с пройденным материалом и ДЗ
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page2" id="page4">
+    <h3>Наши курсы</h3>
+    <div class="card">      
+        <div class="lessons">
+          <img class="levitate" src="./jen/minecraft.png" />
+          <h5>Программирование в Minecraft Education</h5>
+        </div>   
+        <div class="lessons">
+          <img class="levitate" src="./jen/roblox.png" />
+          <h5>Создание игр в Roblox Studio</h5>
+        </div>
+        <div class="lessons">
+          <img class="levitate" src="./jen/unity.png" />
+          <h5>Разработка игр на Unity</h5>
+        </div>
+      <div id="robot">
+      </div>
+    </div>
+  </div>
+
+  <!-- Пространство для прокрутки -->
+  <div class="content-spacer"></div>
+
+  <!-- Скрипт -->
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://spamigor.ru/library/threejs/build/three.module.js",
+      "three/addons/": "https://spamigor.ru/library/threejs/examples/jsm/"
+    }
+  }
+</script>
+<script type="module" src="./jen/robot.js"></script>
+
+<script>
+  const page1 = document.getElementById('page1');
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
+  const page4 = document.getElementById('page4');  
+  const page2ShowStart = 100;
+  const page2HideStart = 600;
+  const page2FadeOutEnd = 700;
+  const page3ShowStart = 700;
+  const page3FadeInEnd = 1200;
+  const page3HideStart = 1300;
+  const page4ShowStart = 1300;
+  const page4FadeInEnd = 1900;
+
+  var setScroll = (scr) => {
+    const scrollY = window.scrollY;
+    if (src < 0) scr = 0;
+    if (Math.abs(scr - scrollY) > 20) {
+      window.scrollTo(0, scrollY + (scr > scrollY ? 10 : -10));
+      setTimeout(setScroll,20,scr)
+    }
+    else if (scrollY < 30) window.scrollTo(0,0);
+  }
+
+  function updatePages() {
+    const scrollY = window.scrollY;
+
+    // === Управление page1 (уезжает наверх) ===
+    if (scrollY <= 0) {
+      page1.style.transform = 'translateY(0)';
+      page1.style.opacity = '1';
+      page1.style.backdropFilter = 'blur(0px)';
+    } else {
+      const blurAmount = Math.min(scrollY * 0.03, 10);
+      const opacity = Math.max(1 - scrollY * 0.008, 0);
+      page1.style.transform = `translateY(-${scrollY * 2.5}px)`;
+      page1.style.opacity = opacity;
+      page1.style.backdropFilter = `blur(${blurAmount}px)`;
+    }
+
+    // === Управление page2 (появляется, потом исчезает) ===
+
+    if (scrollY > page2ShowStart) {
+      if (scrollY < page2HideStart) {
+        page2.style.opacity = '1';
+        page2.classList.add('show');
+      } else if (scrollY >= page2HideStart) {
+        const fadeOutProgress = Math.min((scrollY - page2HideStart) / (page2FadeOutEnd - page2HideStart), 1);
+        page2.style.opacity = 1 - fadeOutProgress;
+        if (fadeOutProgress === 1) {
+          page2.classList.remove('show');
+        }
+      }
+    } else {
+      page2.style.opacity = '0';
+      page2.classList.remove('show');
+    }
+
+    // === Управление page3 (появляется после page2) ===
+
+    if (scrollY > page3ShowStart) {
+      const fadeInProgress = Math.min((scrollY - page3ShowStart) / (page3FadeInEnd - page3ShowStart), 1);
+      page3.style.opacity = fadeInProgress;
+      if (fadeInProgress > 0) {
+        page3.classList.add('show');
+      } else {
+        page3.classList.remove('show');
+      }
+    } else {
+      page3.style.opacity = '0';
+      page3.classList.remove('show');
+    }
+
+    // === Управление page4 (появляется после page3) ===
+
+    if (scrollY > page4ShowStart) {
+      const fadeInProgress = Math.min((scrollY - page4ShowStart) / (page4FadeInEnd - page4ShowStart), 1);
+      page4.style.opacity = fadeInProgress;
+      if (fadeInProgress > 0) {
+        page4.classList.add('show');
+      } else {
+        page4.classList.remove('show');
+      }
+    } else {
+      page4.style.opacity = '0';
+      page4.classList.remove('show');
+    }
+  }
+let touchStartY = 0;
+
+  // При касании экрана запоминаем начальную координату Y
+  function handleTouchStart(event) {
+    event.preventDefault(); // Запрещает стандартное действие скролла
+    touchStartY = event.touches[0].clientY;
+  }
+
+  // При отпускании пальца проверяем направление свайпа
+  function handleTouchEnd(event) {
+    event.preventDefault(); // Запрещает стандартное действие скролла
+    const touchEndY = event.changedTouches[0].clientY;
+    const diff = touchStartY - touchEndY;
+
+    // Если палец двигался вниз (начало > конец), то это свайп вниз
+    if (diff < -50) { // -50 — порог срабатывания (в пикселях)
+      setScroll((Math.floor(window.scrollY/300) - 1)*300)
+    }
+    else if (diff > 50) { // 50 — порог срабатывания (в пикселях)
+      setScroll((Math.floor(window.scrollY/300) + 1)*300)
+    }
+  }
+
+  // Добавляем события
+  /*document.addEventListener('touchstart', handleTouchStart, { passive: true });
+  document.addEventListener('touchend', handleTouchEnd, { passive: true });
+  document.addEventListener('touchmove', function(event) {
+    event.preventDefault(); // Запрещает стандартное действие скролла
+  });*/
+  window.addEventListener('scroll', updatePages);
+  window.addEventListener('load', updatePages);
+</script>
+
+</body>
+</html>
