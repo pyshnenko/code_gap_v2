@@ -17,12 +17,12 @@
   <!-- Навбар -->
   <nav class="navbar">
     <div style="display: inline-flex; align-items: center;">
-      <img src="./jen/logo.png" alt="Логотип" class="logo" />
+      <img src="./jen/logo.png" alt="Логотип" class="logo" id="topLogo"/>
       <ul class="nav-links">
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#courses">Курсы</a></li>
-        <li><a href="#team">Команда</a></li>
-        <li><a href="#contacts">Контакты</a></li>
+        <li><p id="about">О нас</p></li>
+        <li><p id="courses">Курсы</p></li>
+        <li><p id="team">Команда</p></li>
+        <li><p id="contact">Контакты</p></li>
       </ul>
     </div>
     <div class="phoneButton">
@@ -53,7 +53,13 @@
         style="width: 100%; height: 100%; object-fit: cover;"
       >
     </div>
-    <img class="gamepad" src="./jen/Gamepad_better.png" />
+    <div>
+      <div class="microsft">
+        <img src="./jen/microsoft.png" />
+        <p>Сертифицировано<br>Microsoft</p>
+      </div>
+      <img class="gamepad" src="./jen/Gamepad_better.png" />
+    </div>
   </div>
 
   <!-- Основной контент -->
@@ -117,45 +123,59 @@
     </div>
   </div>
   <div class="page2" id="page4">
-  <h3>Наши курсы</h3>
-  <div class="card">
-    <div class="carousel">
-      <div class="carousel-item">
-        <img src="./jen/minecraft.png" alt="Курс">
-        <h5>Программирование в Minecraft</h5>
-      </div>
-      <div class="carousel-item">
-        <img src="./jen/roblox.png" alt="Курс">
-        <h5>Создание игр в Roblox</h5>
-      </div>
-      <div class="carousel-item">
-        <img src="./jen/unity.png" alt="Курс">
-        <h5>Разработка на Unity</h5>
-      </div>
-    </div>
-    <div id="robot"></div>
-  </div>
-  <div></div>
-</div>
-  <!--<div class="page2" id="page4">
     <h3>Наши курсы</h3>
-    <div class="card">      
-        <div class="lessons">
-          <img class="levitate" src="./jen/minecraft.png" />
-          <h5>Программирование в Minecraft Education</h5>
-        </div>   
-        <div class="lessons">
-          <img class="levitate" src="./jen/roblox.png" />
-          <h5>Создание игр в Roblox Studio</h5>
+    <div class="card">
+      <div class="carousel">
+        <div class="carousel-item">
+          <img src="./jen/minecraft.png" alt="Курс">
+          <h5>Программирование в Minecraft</h5>
         </div>
-        <div class="lessons">
-          <img class="levitate" src="./jen/unity.png" />
-          <h5>Разработка игр на Unity</h5>
+        <div class="carousel-item">
+          <img src="./jen/roblox.png" alt="Курс">
+          <h5>Создание игр в Roblox</h5>
         </div>
-      <div id="robot">
+        <div class="carousel-item">
+          <img src="./jen/unity.png" alt="Курс">
+          <h5>Разработка на Unity</h5>
+        </div>
+      </div>
+      <div id="robot"></div>
+    </div>
+    <div></div>
+  </div>
+  <div class="page2" id="page5">
+    <div class="card">
+      <h3>
+        Не можете определиться с курсом?<br>
+Оставьте заявку, мы вам перезвоним
+и поможем выбрать подходящий курс
+      </h3>
+      <button>Оставить заявку</button>
+    </div>
+  </div>
+  <div class="page2" id="page6">
+    <div class="card">
+      <h3>
+        Наша команда
+      </h3>      
+      <div class="card">
+        <div class="carousel">
+          <div class="carousel-item revertable" data-back="Евгений работает в области разработки игр уже более 9 лет, а преподает разработку игр для детей более 7-ти лет. Он обожает Unity и язык программирования C#. В методические материалы он вложил всю свою душу и любовь к программированию.">
+            <img src="./jen/evgen.jpg" />
+            <h5>Евгений</h5>
+            <p>
+              Основатель, Unity разработчик, Создатель методических материалов<br>Выпускник МГТУ им. Н.Э. Баумана
+            </p>
+          </div>
+          <div class="carousel-item revertable" data-back="Мартин является Fullstack и Python разработчиком более 7 лет.<br>Опыт преподавания детям 5 лет.<br>Язык программирования Python - его страсть, именно поэтому наш курс программирования на этом языке разработан Мартином. Также в нашей команде он отвечает за SMM и наши соц. сети.">
+            <img src="./jen/martin.jpg" />
+            <h5>Мартин</h5>
+            <p>Основатель, Web разработчик, Работа над соц. сетями<br>Выпускник МГУ им. М.В. Ломоносова</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>-->
+  </div>
 
   <!-- Пространство для прокрутки -->
   <div class="content-spacer"></div>
@@ -176,6 +196,8 @@
   const page2 = document.getElementById('page2');
   const page3 = document.getElementById('page3');
   const page4 = document.getElementById('page4');  
+  const page5 = document.getElementById('page5');
+  const page6 = document.getElementById('page6');
 // Плавная последовательная анимация
 const page2ShowStart   = 100;   // page2 появляется
 const page2FadeInEnd   = 200;   // page2 полностью виден
@@ -190,9 +212,16 @@ const page3FadeOutEnd  = 1300;  // page3 исчезает
 const page4ShowStart   = 1250;  // page4 появляется (начинается до конца page3)
 const page4FadeInEnd   = 1350;  // page4 полностью виден
 
+const page5ShowStart   = 1700;  // page5 начинает появляться
+const page5FadeInEnd   = 1750;  // page5 полностью виден
+
+const page6ShowStart   = 2000;  // page6 начинает появляться
+const page6FadeInEnd   = 2100;  // page6 полностью виден
+
   var setScroll = (scr) => {
+    console.log(scr)
     const scrollY = window.scrollY;
-    if (src < 0) scr = 0;
+    if (scr < 0) scr = 0;
     if (Math.abs(scr - scrollY) > 20) {
       window.scrollTo(0, scrollY + (scr > scrollY ? 10 : -10));
       setTimeout(setScroll,20,scr)
@@ -263,9 +292,20 @@ const page4FadeInEnd   = 1350;  // page4 полностью виден
     // === Управление page4 (появляется после page3) ===
 
     if (scrollY > page4ShowStart) {
-      const fadeInProgress = Math.min((scrollY - page4ShowStart) / (page4FadeInEnd - page4ShowStart), 1);
-      page4.style.opacity = fadeInProgress;
-      if (fadeInProgress > 0) {
+      let opacity = 1;
+
+      // Появление
+      if (scrollY <= page4FadeInEnd) {
+        opacity = (scrollY - page4ShowStart) / (page4FadeInEnd - page4ShowStart);
+      }
+      // Исчезание при появлении page5
+      else if (scrollY >= page5ShowStart) {
+        opacity = 1 - (scrollY - page5ShowStart) / (page5FadeInEnd - page5ShowStart);
+        opacity = Math.max(opacity, 0);
+      }
+
+      page4.style.opacity = opacity;
+      if (opacity > 0) {
         page4.classList.add('show');
       } else {
         page4.classList.remove('show');
@@ -273,6 +313,48 @@ const page4FadeInEnd   = 1350;  // page4 полностью виден
     } else {
       page4.style.opacity = '0';
       page4.classList.remove('show');
+    }
+
+    // === Управление page5 (появляется после page4, исчезает при page6) ===
+    if (scrollY > page5ShowStart) {
+      let opacity = 1;
+
+      // Появление
+      if (scrollY <= page5FadeInEnd) {
+        opacity = (scrollY - page5ShowStart) / (page5FadeInEnd - page5ShowStart);
+      }
+      // Исчезание при появлении page6
+      else if (scrollY >= page6ShowStart) {
+        opacity = 1 - (scrollY - page6ShowStart) / (page6FadeInEnd - page6ShowStart);
+        opacity = Math.max(opacity, 0);
+      }
+
+      page5.style.opacity = opacity;
+      if (opacity > 0) {
+        page5.classList.add('show');
+      } else {
+        page5.classList.remove('show');
+      }
+    } else {
+      page5.style.opacity = '0';
+      page5.classList.remove('show');
+    }
+
+    // === Управление page6 (появляется после page5) ===
+    if (scrollY > page6ShowStart) {
+      const fadeInProgress = Math.min(
+        (scrollY - page6ShowStart) / (page6FadeInEnd - page6ShowStart),
+        1
+      );
+      page6.style.opacity = fadeInProgress;
+      if (fadeInProgress > 0) {
+        page6.classList.add('show');
+      } else {
+        page6.classList.remove('show');
+      }
+    } else {
+      page6.style.opacity = '0';
+      page6.classList.remove('show');
     }
   }
 let touchStartY = 0;
@@ -308,44 +390,159 @@ let touchStartY = 0;
   window.addEventListener('load', updatePages);
 
   document.querySelectorAll('.carousel').forEach(carousel => {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let isDragging = false; // Флаг: точно ли тянем, а не просто касание
 
-    // Нажатие (мышь или тач)
-    carousel.addEventListener('mousedown', startDrag);
-    carousel.addEventListener('touchstart', startDrag, { passive: false });
+  // Нажатие
+  carousel.addEventListener('mousedown', startDrag);
+  carousel.addEventListener('touchstart', startDrag, { passive: false });
 
-    // Движение
-    carousel.addEventListener('mousemove', drag);
-    carousel.addEventListener('touchmove', drag, { passive: false });
+  // Движение
+  carousel.addEventListener('mousemove', drag);
+  carousel.addEventListener('touchmove', drag, { passive: false });
 
-    // Отпускание
-    carousel.addEventListener('mouseup', endDrag);
-    carousel.addEventListener('mouseleave', endDrag);
-    carousel.addEventListener('touchend', endDrag);
+  // Отпускание
+  carousel.addEventListener('mouseup', endDrag);
+  carousel.addEventListener('mouseleave', endDrag);
+  carousel.addEventListener('touchend', endDrag);
 
-    function startDrag(e) {
-      isDown = true;
-      carousel.classList.add('active');
-      startX = e.type === 'touchstart' ? e.touches[0].pageX : e.pageX;
-      scrollLeft = carousel.scrollLeft;
+  function startDrag(e) {
+    isDown = true;
+    isDragging = false;
+    startX = e.type === 'touchstart' ? e.touches[0].pageX : e.pageX;
+    scrollLeft = carousel.scrollLeft;
+    carousel.classList.add('active');
+  }
+
+  function drag(e) {
+    if (!isDown) return;
+
+    const x = e.type === 'touchmove' ? e.touches[0].pageX : e.pageX;
+    const y = e.type === 'touchmove' ? e.touches[0].pageY : e.pageY;
+
+    // Определяем начальную точку
+    const dx = Math.abs(x - startX);
+    const dy = Math.abs(y - (e.type === 'touchmove' ? e.touches[0].clientY : e.clientY));
+
+    // Если вертикальное движение больше горизонтального — это не drag карусели, а скролл страницы
+    if (dy > dx) {
+      isDown = false; // Отключаем обработку drag
+      return; // Не блокируем, пропускаем событие
     }
 
-    function drag(e) {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.type === 'touchmove' ? e.touches[0].pageX : e.pageX;
-      const walk = (x - startX) * 1.5; // Ускорение прокрутки
-      carousel.scrollLeft = scrollLeft - walk;
+    // Если движение достаточно большое по X — это drag
+    if (dx > 5) {
+      isDragging = true;
+      e.preventDefault(); // Только если явно тянем по X
     }
 
-    function endDrag() {
-      isDown = false;
-      carousel.classList.remove('active');
-    }
-  });
+    const walk = (x - startX) * 1.5;
+    carousel.scrollLeft = scrollLeft - walk;
+  }
+
+  function endDrag() {
+    isDown = false;
+    isDragging = false;
+    carousel.classList.remove('active');
+  }
+});
+document.getElementById('about').addEventListener('click', function() {
+  setScroll(300)
+})
+document.getElementById('courses').addEventListener('click', function() {
+  setScroll(1400)
+})
+document.getElementById('team').addEventListener('click', function() {
+  setScroll(2000)
+})
+document.getElementById('contact').addEventListener('click', function() {
+  setScroll(2000)
+})
+document.getElementById('topLogo').addEventListener('click', function() {
+  setScroll(0)
+})
+
+  // --- flip cards for .carousel-item.revertable ---
+const revert = function() {
+    const items = document.querySelectorAll('.carousel-item.revertable');
+    items.forEach(item => {
+      // если уже обработан — пропускаем
+      if (item.dataset._flipInit) return;
+      item.dataset._flipInit = '1';
+
+      const inner = document.createElement('div');
+      inner.className = 'revertable-inner';
+
+      const front = document.createElement('div');
+      front.className = 'revertable-front';
+
+      const back = document.createElement('div');
+      back.className = 'revertable-back';
+
+      // переместить все исходные child'ы (кроме тех, что уже добавлены)
+      while (item.firstChild) {
+        front.appendChild(item.firstChild);
+      }
+
+      const backHtml = item.getAttribute('data-back') || 'Информация';
+      back.innerHTML = '<div>' + backHtml + '</div>';
+
+      inner.appendChild(front);
+      inner.appendChild(back);
+      item.appendChild(inner);
+
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+
+      // простая и надёжная детекция клика (отличаем от перетаскивания)
+      let pointerDown = null;
+      let moved = false;
+
+      item.addEventListener('pointerdown', (e) => {
+        pointerDown = { x: e.clientX, y: e.clientY, t: Date.now() };
+        moved = false;
+        item.setPointerCapture(e.pointerId);
+      });
+
+      item.addEventListener('pointermove', (e) => {
+        if (!pointerDown) return;
+        const dx = Math.abs(e.clientX - pointerDown.x);
+        const dy = Math.abs(e.clientY - pointerDown.y);
+        if (dx > 8 || dy > 8) moved = true;
+      });
+
+      item.addEventListener('pointerup', (e) => {
+        if (!pointerDown) return;
+        const dt = Date.now() - pointerDown.t;
+        // считаем кликом, если не было значимого движения и не очень долгий удерж
+        if (!moved && dt < 600) {
+          item.classList.toggle('flipped');
+        }
+        try { item.releasePointerCapture(e.pointerId); } catch (err) {}
+        pointerDown = null;
+      });
+
+      // отмена (например pointercancel)
+      item.addEventListener('pointercancel', () => {
+        pointerDown = null;
+        moved = false;
+      });
+
+      // клавиатура
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          item.classList.toggle('flipped');
+        }
+        if (e.key === 'Escape') {
+          item.classList.remove('flipped');
+        }
+      });
+    });
+  };
+  revert();
 </script>
-
 </body>
 </html>

@@ -80,9 +80,19 @@
   height: 3500px;
 }
 #robot {    
-    transform: translateY(150px);
+    bottom: -340px;
 }
 .carousel-item {
     padding: 64px 16px;
+}
+
+#page5 {
+    
+  width: 110%;
+}
+
+#page6 .card img {
+  width: 300px;
+  height: 300px;
 }
 }
