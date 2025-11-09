@@ -82,38 +82,62 @@
     <div class="card">
       <h3>Наши приоритеты</h3>
       <div class="priory">
-        <div>
-          <img class="levitate" src="./jen/guy-programming.png" />
-          <h5>Преподаватели, которые вдохновляют</h5>
-          <p>
-            Их любовь и знание предмета мотивируют учеников покорять новые вершины
-          </p>
-        </div>
-        <div>
-          <img class="levitate" src="./jen/smartboy.png" />
-          <h5>Обучение практическим навыкам</h5>
-          <p>
-            Наши курсы основаны на современных британских курсах по разработке игр от gamedev.tv
-          </p>
-        </div>
-        <div>
-          <img class="levitate" src="./jen/Group.png" />
-          <h5>Работа в мини-группах или индивидуально</h5>
-          <p>
-            Мы работаем только в мини-группах до 8 учеников, чтобы уделить внимание каждому
-          </p>
-        </div>
-        <div>
-          <img class="levitate" src="./jen/camera.png" />
-          <h5>Видеоуроки для закрепления материала</h5>
-          <p>
-            После каждого занятия мы высылаем видеоуроки с пройденным материалом и ДЗ
-          </p>
+        <div class="carousel">
+          <div class="carousel-item">
+            <img class="levitate" src="./jen/guy-programming.png" />
+            <h5>Преподаватели, которые вдохновляют</h5>
+            <p>
+              Их любовь и знание предмета мотивируют учеников покорять новые вершины
+            </p>
+          </div>
+          <div class="carousel-item">
+            <img class="levitate" src="./jen/smartboy.png" />
+            <h5>Обучение практическим навыкам</h5>
+            <p>
+              Наши курсы основаны на современных британских курсах по разработке игр от gamedev.tv
+            </p>
+          </div>
+          <div class="carousel-item">
+            <img class="levitate" src="./jen/Group.png" />
+            <h5>Работа в мини-группах или индивидуально</h5>
+            <p>
+              Мы работаем только в мини-группах до 8 учеников, чтобы уделить внимание каждому
+            </p>
+          </div>
+          <div class="carousel-item">
+            <img class="levitate" src="./jen/camera.png" />
+            <h5>Видеоуроки для закрепления материала</h5>
+            <p>
+              После каждого занятия мы высылаем видеоуроки с пройденным материалом и ДЗ
+              </p>
+          </div>
         </div>
       </div>
+      <button>Подробнее</button>
     </div>
   </div>
   <div class="page2" id="page4">
+  <h3>Наши курсы</h3>
+  <div class="card">
+    <div class="carousel">
+      <div class="carousel-item">
+        <img src="./jen/minecraft.png" alt="Курс">
+        <h5>Программирование в Minecraft</h5>
+      </div>
+      <div class="carousel-item">
+        <img src="./jen/roblox.png" alt="Курс">
+        <h5>Создание игр в Roblox</h5>
+      </div>
+      <div class="carousel-item">
+        <img src="./jen/unity.png" alt="Курс">
+        <h5>Разработка на Unity</h5>
+      </div>
+    </div>
+    <div id="robot"></div>
+  </div>
+  <div></div>
+</div>
+  <!--<div class="page2" id="page4">
     <h3>Наши курсы</h3>
     <div class="card">      
         <div class="lessons">
@@ -131,7 +155,7 @@
       <div id="robot">
       </div>
     </div>
-  </div>
+  </div>-->
 
   <!-- Пространство для прокрутки -->
   <div class="content-spacer"></div>
@@ -152,14 +176,19 @@
   const page2 = document.getElementById('page2');
   const page3 = document.getElementById('page3');
   const page4 = document.getElementById('page4');  
-  const page2ShowStart = 100;
-  const page2HideStart = 600;
-  const page2FadeOutEnd = 700;
-  const page3ShowStart = 700;
-  const page3FadeInEnd = 1200;
-  const page3HideStart = 1300;
-  const page4ShowStart = 1300;
-  const page4FadeInEnd = 1900;
+// Плавная последовательная анимация
+const page2ShowStart   = 100;   // page2 появляется
+const page2FadeInEnd   = 200;   // page2 полностью виден
+const page2HideStart   = 550;   // page2 начинает исчезать
+const page2FadeOutEnd  = 650;   // page2 исчезает
+
+const page3ShowStart   = 600;   // page3 начинает появляться (перекрытие 50px)
+const page3FadeInEnd   = 700;   // page3 полностью виден
+const page3HideStart   = 1200;  // page3 начинает исчезать
+const page3FadeOutEnd  = 1300;  // page3 исчезает
+
+const page4ShowStart   = 1250;  // page4 появляется (начинается до конца page3)
+const page4FadeInEnd   = 1350;  // page4 полностью виден
 
   var setScroll = (scr) => {
     const scrollY = window.scrollY;
@@ -208,9 +237,20 @@
     // === Управление page3 (появляется после page2) ===
 
     if (scrollY > page3ShowStart) {
-      const fadeInProgress = Math.min((scrollY - page3ShowStart) / (page3FadeInEnd - page3ShowStart), 1);
-      page3.style.opacity = fadeInProgress;
-      if (fadeInProgress > 0) {
+      let opacity = 1;
+
+      // Появление
+      if (scrollY <= page3FadeInEnd) {
+        opacity = (scrollY - page3ShowStart) / (page3FadeInEnd - page3ShowStart);
+      }
+      // Исчезание при появлении page4
+      else if (scrollY >= page3HideStart) {
+        opacity = 1 - (scrollY - page3HideStart) / (page3FadeOutEnd - page3HideStart);
+        opacity = Math.max(opacity, 0);
+      }
+
+      page3.style.opacity = opacity;
+      if (opacity > 0) {
         page3.classList.add('show');
       } else {
         page3.classList.remove('show');
@@ -266,6 +306,45 @@ let touchStartY = 0;
   });*/
   window.addEventListener('scroll', updatePages);
   window.addEventListener('load', updatePages);
+
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Нажатие (мышь или тач)
+    carousel.addEventListener('mousedown', startDrag);
+    carousel.addEventListener('touchstart', startDrag, { passive: false });
+
+    // Движение
+    carousel.addEventListener('mousemove', drag);
+    carousel.addEventListener('touchmove', drag, { passive: false });
+
+    // Отпускание
+    carousel.addEventListener('mouseup', endDrag);
+    carousel.addEventListener('mouseleave', endDrag);
+    carousel.addEventListener('touchend', endDrag);
+
+    function startDrag(e) {
+      isDown = true;
+      carousel.classList.add('active');
+      startX = e.type === 'touchstart' ? e.touches[0].pageX : e.pageX;
+      scrollLeft = carousel.scrollLeft;
+    }
+
+    function drag(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.type === 'touchmove' ? e.touches[0].pageX : e.pageX;
+      const walk = (x - startX) * 1.5; // Ускорение прокрутки
+      carousel.scrollLeft = scrollLeft - walk;
+    }
+
+    function endDrag() {
+      isDown = false;
+      carousel.classList.remove('active');
+    }
+  });
 </script>
 
 </body>

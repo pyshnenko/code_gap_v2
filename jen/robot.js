@@ -58,7 +58,8 @@ function init() {
     (gltf) => {
       model = gltf.scene;
       model.position.set(-40, -10, 0);
-      model.scale.set(2, 2, 2); // увеличена
+      const scale = window.innerWidth < 900 ? 4 : 2
+      model.scale.set(scale, scale, scale); // увеличена
       scene.add(model);
 
       // 🟢 Отладка: если не видно — добавь это временно
@@ -112,11 +113,11 @@ function initAnimations(animations) {
   // Запускаем сцену
   startRobotJourney();
 }
-
+const wolkTime = window.innerWidth > 900 ? 5000 : 2500
 async function startRobotJourney() {
  await rotateModelTo(Math.PI / 2); // вправо
 fadeToAction('Walking', 0.5);
-await moveModelTo(0, 5000); // 10 сек
+await moveModelTo(0, wolkTime); // 10 сек
 fadeToAction('Idle', 0.5);
 await rotateModelTo(0);
 if (Math.random() < 0.7) {
@@ -127,7 +128,7 @@ await new Promise(r => setTimeout(r, 2000));
 // Из 0 в 50 → 10 сек
 await rotateModelTo(Math.PI / 2);
 fadeToAction('Walking', 0.5);
-await moveModelTo(40, 5000);
+await moveModelTo(40, wolkTime);
 fadeToAction('Idle', 0.5);
 await rotateModelTo(0);
 await new Promise(r => setTimeout(r, 2000));
@@ -135,7 +136,7 @@ await new Promise(r => setTimeout(r, 2000));
 // Из 50 в -50 → 10 сек (бег)
 await rotateModelTo(-Math.PI / 2); // влево
 fadeToAction('Running', 0.5);
-await moveModelTo(-40, 5000);
+await moveModelTo(-40, wolkTime);
 fadeToAction('Dance', 0.5);
 createRainEffect();
 await rotateModelTo(0);

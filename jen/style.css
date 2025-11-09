@@ -29,7 +29,7 @@ body::before {
 
 /* Пространство для прокрутки */
 .content-spacer {
-  height: 2000px;
+  height: 2500px;
 }
 
 /* Анимация навбара */
@@ -290,14 +290,14 @@ h3 {
   object-fit: contain;
 }
 
-.priory {
+.priory .carousel {
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+    justify-content: space-around;
 }
-.priory div {
+.priory .carousel-item {
   padding: 16px;
-  max-width: 300px;
+  max-width: 250px;
 }
 .priory img {
   height: 200px
@@ -339,6 +339,7 @@ h5 {
   width: 100%;
   height: 600px;
   position: absolute;
+  z-index: -1;
 }
 
 .lessons {
@@ -361,5 +362,56 @@ h5 {
 }
 
 #page4 .card {
-  justify-content: space-around
+  justify-content: space-around;
+  height: auto;
+}
+
+.carousel {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 20px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    justify-content: space-evenly;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari: скрыть */
+}
+
+.carousel-item {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.03);
+}
+
+.carousel-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.carousel-item h5 {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #013831;
 }

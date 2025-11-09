@@ -45,9 +45,14 @@
         height: 120px;
     }
     .page2 {
-        padding: 4px;
+        padding: 0;
         top: 50%;
-        height: 90dvh;
+        height: 100dvh;
+        background-color: inherit;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
     .page2 h3 {
         font-size: larger;
@@ -68,4 +73,16 @@
         from, to { border-color: transparent }
         50% { border-color: orange; }
     }
+    .card {        
+        justify-content: space-around;
+    }
+.content-spacer {
+  height: 3500px;
+}
+#robot {    
+    transform: translateY(150px);
+}
+.carousel-item {
+    padding: 64px 16px;
+}
 }
