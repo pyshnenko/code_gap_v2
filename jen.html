@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./jen/style.css" />
   <link rel="stylesheet" href="./jen/mobStyle.css" />
   <link rel="stylesheet" href="./jen/packman-mobile.css" />
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=61fdef51-e176-420c-8c1a-dce383f077b7&lang=ru_RU"></script>
 </head>
 <body>
   <!-- Навбар -->
@@ -176,6 +177,122 @@
       </div>
     </div>
   </div>
+  <div class="page2" id="page7">
+    <div class="card column">
+      <h3>Запишись на первое бесплатное занятие</h3>
+      <div class="form">
+        <input 
+          type="tel" 
+          id="phoneInput" 
+          placeholder="+7 (___) ___-__-__" 
+          maxlength="18"
+          required
+        >
+          <select id="courseDropdown" required>
+            <option value="" disabled selected>Выберите город</option>
+            <option value="minecraft">Наро-Фоминск</option>
+            <option value="roblox">Обнинск</option>
+            <option value="unity">Селятино</option>
+          </select>
+          <button id="submitBtn">Оставить заявку</button>
+      </div>
+    </div>
+  </div>
+  <div class="page2" id="page8">
+    <div class="card column">
+      <h3>Отзывы о нас</h3>
+      <div class="carousel">
+        <div class="carousel-item">
+          <p>
+            Посещали курсы Unity у преподавателя Евгения. Евгений прекрасный преподаватель, очень доброжелательный и позитивный, находит общий язык с любым ребенком и может его заинтересовать. После каждого занятия нам высылали видеоуроки с пройденным материалом. В конце курса у Киры были готовы несколько небольших, но полноценных игр. Однозначно рекомендую академию CODE_GAP, это не первые наши курсы, есть с чем сравнить.
+          </p>
+          <div>
+            <h5>
+              Ольга Б.
+            </h5>
+            <h6>
+              Мама Киры
+            </h6>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <p>
+            Здравствуйте! Отдала племянницу на летние интенсивны, делюсь своим мнением. Хочу отметить квалифицированный и опытный преподавательский состав. Учителя всегда были готовы помочь и поддержать мою девочку. Благодаря профессиональному подходу, внимательности, умению объяснить сложные темы простым и понятным языком, ребенок никогда не чувствовал себя потерянным или запутанным во время занятий.
+          </p>
+          <div>
+            <h5>
+              Меланя П.
+            </h5>
+            <h6>
+              Тетя Анжелы
+            </h6>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <p>
+            Хочу поделиться впечатлениями от занятий в код гэп. Мой сын (ему 12 лет) прошёл летний интенсив по 3D моделированию в программе Blender. Его просто поглотил этот процесс! Теперь он любую возможность использует, чтобы изобразить что-то из реальной жизни в 3D формате.
+          </p>
+          <div>
+            <h5>
+              Елена К.
+            </h5>
+            <h6>
+              Мама Семена
+            </h6>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <p>
+            Были в 3 местах на пробных уроках, сын сразу захотел заниматься только здесь, у Евгения цель - что бы каждый ученик понял материал, а не просто отвести занятия. Сын занимается на курсе по Роблоксу, обязательно возьмем летние интенсивы и зимой продолжим более сложные языки изучать только тут)
+И большой плюс, что можно посещать занятия как удаленно, так и приходить в небольшую группу.
+          </p>
+          <div>
+            <h5>
+              Артур М.
+            </h5>
+            <h6>
+              Папа Максима
+            </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page2" id="page9">
+    <div class="card">
+      <div id="map"></div>
+      <div class="contacts-section" id="contacts">
+        <h3>Наши филиалы</h3>
+        <div class="addresses">
+          <div class="address-card" data-id="1">
+            <h4>1. Наро-Фоминск</h4>
+            <p>
+              ул. Маршала Жукова, 6Б<br>
+              Бизнес-центр «Корвет»<br>
+            </p>
+          </div>
+          <div class="address-card" data-id="2">
+            <h4>2. Обнинск</h4>
+            <p>
+              ул. Аксёнова, 18Б<br>
+              Детский центр «Арена»<br>
+            </p>
+          </div>
+          <div class="address-card" data-id="3">
+            <h4>3. Селятино</h4>
+            <p>
+              ул. Спортивная, 5/1<br>
+              Центральная библиотека<br>
+            </p>
+          </div>
+        </div>
+        <div style="margin-top: 20px; font-family: 'Ubuntu', sans-serif; color: #013831;">
+          <p><strong>📞 Телефон:</strong> +7 995 757 87 46</p>
+          <p><strong>📧 Email:</strong> info@code-gap.ru</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Пространство для прокрутки -->
   <div class="content-spacer"></div>
@@ -190,6 +307,74 @@
   }
 </script>
 <script type="module" src="./jen/robot.js"></script>
+<script>
+  let map;
+  let placemarks = [];
+
+  ymaps.ready(function () {
+    map = new ymaps.Map('map', {
+      center: [55.317231, 36.825535],
+      zoom: 10,
+      controls: ['zoomControl', 'fullscreenControl']
+    });
+
+    function createPlacemark(coords, number, hint, balloon) {
+      return new ymaps.Placemark(coords, {
+        hintContent: hint,
+        balloonContent: balloon,
+        iconContent: number
+      }, {
+        preset: 'islands#blueNumberIcon'
+      });
+    }
+
+    const placemark1 = createPlacemark([55.384665, 36.725096], '1', 'Code_Gap Наро-Фоминск', 'Наро-Фоминск, ул. Маршала Жукова 6Б (БЦ "Корвет")');
+    const placemark2 = createPlacemark([55.117184, 36.616150], '2', 'Code_Gap Обнинск', 'Обнинск, ул. Аксёнова 18Б (ДЦ "Арена")');
+    const placemark3 = createPlacemark([55.516979, 36.983023], '3', 'Code_Gap Селятино', 'Селятино, ул. Спортивная 5/1 (Библиотека)');
+
+    placemark1.properties.set('id', 1);
+    placemark2.properties.set('id', 2);
+    placemark3.properties.set('id', 3);
+
+    placemarks = [placemark1, placemark2, placemark3];
+
+    map.geoObjects.add(placemark1);
+    map.geoObjects.add(placemark2);
+    map.geoObjects.add(placemark3);
+
+    // === Подсветка карточки и метки ===
+    setTimeout(() => {
+      const addressCards = document.querySelectorAll('.address-card');
+
+      addressCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const id = parseInt(card.getAttribute('data-id'));
+          const placemark = placemarks.find(pm => pm.properties.get('id') === id);
+
+          // Снимаем активный класс со всех
+          addressCards.forEach(c => c.classList.remove('active'));
+          // Добавляем текущей
+          card.classList.add('active');
+
+          if (placemark) {
+            map.setCenter(placemark.geometry.getCoordinates(), 15, { duration: 500 });
+            placemark.balloon.open();
+
+            placemark.options.set('preset', 'islands#redNumberIcon');
+            setTimeout(() => {
+              placemark.options.set('preset', 'islands#blueNumberIcon');
+            }, 2000);
+          }
+        });
+      });
+    }, 500);
+  });
+  document.addEventListener('click', (e) => {
+  if (!e.target.closest('.address-card')) {
+    document.querySelectorAll('.address-card').forEach(c => c.classList.remove('active'));
+  }
+});
+</script>
 
 <script>
   const page1 = document.getElementById('page1');
@@ -198,6 +383,9 @@
   const page4 = document.getElementById('page4');  
   const page5 = document.getElementById('page5');
   const page6 = document.getElementById('page6');
+  const page7 = document.getElementById('page7');
+  const page8 = document.getElementById('page8');
+  const page9 = document.getElementById('page9');
 // Плавная последовательная анимация
 const page2ShowStart   = 100;   // page2 появляется
 const page2FadeInEnd   = 200;   // page2 полностью виден
@@ -217,6 +405,15 @@ const page5FadeInEnd   = 1750;  // page5 полностью виден
 
 const page6ShowStart   = 2000;  // page6 начинает появляться
 const page6FadeInEnd   = 2100;  // page6 полностью виден
+
+const page7ShowStart   = 2300;  // page7 начинает появляться
+const page7FadeInEnd   = 2400;  // page7 полностью виден
+
+const page8ShowStart   = 2600;  // page8 начинает появляться
+const page8FadeInEnd   = 2700;  // page8 полностью виден
+
+const page9ShowStart   = 2900;  // page9 начинает появляться
+const page9FadeInEnd   = 3000;  // page9 полностью виден
 
   var setScroll = (scr) => {
     console.log(scr)
@@ -356,6 +553,78 @@ const page6FadeInEnd   = 2100;  // page6 полностью виден
       page6.style.opacity = '0';
       page6.classList.remove('show');
     }
+
+    if (scrollY >= page7ShowStart) {
+      const fadeOutProgress = Math.min(
+        (scrollY - page7ShowStart) / (page7FadeInEnd - page7ShowStart),
+        1
+      );
+      page6.style.opacity = 1 - fadeOutProgress;
+    }
+
+    if (scrollY > page7ShowStart) {
+      const fadeInProgress = Math.min(
+        (scrollY - page7ShowStart) / (page7FadeInEnd - page7ShowStart),
+        1
+      );
+      page7.style.opacity = fadeInProgress;
+      if (fadeInProgress > 0) {
+        page7.classList.add('show');
+      } else {
+        page7.classList.remove('show');
+      }
+    } else {
+      page7.style.opacity = '0';
+      page7.classList.remove('show');
+    }
+
+    if (scrollY >= page8ShowStart) {
+      const fadeOutProgress = Math.min(
+        (scrollY - page8ShowStart) / (page8FadeInEnd - page8ShowStart),
+        1
+      );
+      page7.style.opacity = 1 - fadeOutProgress;
+    }
+
+    if (scrollY > page8ShowStart) {
+      const fadeInProgress = Math.min(
+        (scrollY - page8ShowStart) / (page8FadeInEnd - page8ShowStart),
+        1
+      );
+      page8.style.opacity = fadeInProgress;
+      if (fadeInProgress > 0) {
+        page8.classList.add('show'); // <-- Добавляем класс 'show'
+      } else {
+        page8.classList.remove('show');
+      }
+    } else {
+      page8.style.opacity = '0';
+      page8.classList.remove('show');
+    }
+
+    if (scrollY >= page9ShowStart) {
+      const fadeOutProgress = Math.min(
+        (scrollY - page9ShowStart) / (page9FadeInEnd - page9ShowStart),
+        1
+      );
+      page8.style.opacity = 1 - fadeOutProgress;
+    }
+
+    if (scrollY > page9ShowStart) {
+      const fadeInProgress = Math.min(
+        (scrollY - page9ShowStart) / (page9FadeInEnd - page9ShowStart),
+        1
+      );
+      page9.style.opacity = fadeInProgress;
+      if (fadeInProgress > 0) {
+        page9.classList.add('show'); // <-- Добавляем класс 'show'
+      } else {
+        page9.classList.remove('show');
+      }
+    } else {
+      page9.style.opacity = '0';
+      page9.classList.remove('show');
+    }
   }
 let touchStartY = 0;
 
@@ -455,7 +724,7 @@ document.getElementById('courses').addEventListener('click', function() {
   setScroll(1400)
 })
 document.getElementById('team').addEventListener('click', function() {
-  setScroll(2000)
+  setScroll(2200)
 })
 document.getElementById('contact').addEventListener('click', function() {
   setScroll(2000)
@@ -543,6 +812,26 @@ const revert = function() {
     });
   };
   revert();
+
+  document.getElementById('phoneInput').addEventListener('input', function(e) {
+  let value = e.target.value.replace(/\D/g, ''); // Оставляем только цифры
+  let formatted = '+7';
+
+  if (value.length > 1) {
+    formatted += ' (' + value.substring(1, 4);
+  }
+  if (value.length >= 4) {
+    formatted += ') ' + value.substring(4, 7);
+  }
+  if (value.length >= 7) {
+    formatted += '-' + value.substring(7, 9);
+  }
+  if (value.length >= 9) {
+    formatted += '-' + value.substring(9, 11);
+  }
+
+  e.target.value = formatted.substring(0, 18);
+});
 </script>
 </body>
 </html>

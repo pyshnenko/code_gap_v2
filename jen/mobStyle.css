@@ -77,7 +77,7 @@
         justify-content: space-around;
     }
 .content-spacer {
-  height: 3500px;
+  height: 4500px;
 }
 #robot {    
     bottom: -340px;
@@ -95,4 +95,26 @@
   width: 300px;
   height: 300px;
 }
+
+ #submitBtn {
+    padding: 12px 24px;
+    font-size: 15px;
+    width: 100%;
+    max-width: 320px;
+  }
+  .address-card {
+    padding: 8px;
+  }
+  .addresses {
+    gap: 10px
+  }
+  #contacts h3 {
+    margin: 8px;
+  }
+  #page9 .card {
+    flex-direction: column-reverse;
+  }
+  #map {
+    width: 100%;
+  }
 }
