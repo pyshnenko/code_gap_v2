@@ -314,7 +314,7 @@
   ymaps.ready(function () {
     map = new ymaps.Map('map', {
       center: [55.317231, 36.825535],
-      zoom: 10,
+      zoom: window.innerWidth > 900 ? 9 : 8,
       controls: ['zoomControl', 'fullscreenControl']
     });
 
@@ -357,7 +357,7 @@
           card.classList.add('active');
 
           if (placemark) {
-            map.setCenter(placemark.geometry.getCoordinates(), 15, { duration: 500 });
+            map.setCenter(placemark.geometry.getCoordinates(), 14, { duration: 1000 });
             placemark.balloon.open();
 
             placemark.options.set('preset', 'islands#redNumberIcon');
@@ -727,7 +727,7 @@ document.getElementById('team').addEventListener('click', function() {
   setScroll(2200)
 })
 document.getElementById('contact').addEventListener('click', function() {
-  setScroll(2000)
+  setScroll(3100)
 })
 document.getElementById('topLogo').addEventListener('click', function() {
   setScroll(0)
