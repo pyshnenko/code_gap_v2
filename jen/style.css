@@ -14,6 +14,7 @@ body {
 .left_page1 {
   width: 45%; 
   height: 100vh;
+  min-width: 725px;
 }
 /* === Фон — через fixed-див === */
 body::before {
@@ -23,7 +24,8 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100dvh;
-  background: linear-gradient(to bottom, white, #ceeeb0);
+  /*background: linear-gradient(to bottom, white, #ceeeb0);*/
+  background: linear-gradient(to bottom, white, #497542);
   z-index: -2;
   pointer-events: none;
   will-change: transform;
@@ -597,7 +599,7 @@ h5 {
   font-size: 16px;
   width: 100%;
   max-width: 320px;
-  border: 2px solid #007bff;
+  border: 2px solid #2d5b2a;
   border-radius: 8px;
   outline: none;
   background-color: white;
@@ -613,7 +615,7 @@ h5 {
 }
 
 #courseDropdown:focus {
-  border-color: #0056b3;
+  border-color: #2d5b2a;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
@@ -621,7 +623,8 @@ h5 {
   padding: 12px 15px;
   font-size: 16px;
   max-width: 320px;
-  border: 2px solid #007bff;
+  /*border: 2px solid #007bff;*/
+  border: 2px solid #2d5b2a;
   border-radius: 8px;
   outline: none;
   background-color: white;
@@ -631,7 +634,7 @@ h5 {
 }
 
 #phoneInput:focus {
-  border-color: #0056b3;
+  border-color: #2d5b2a;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
@@ -640,7 +643,8 @@ h5 {
 }
 
 button {
-  background-color: #007BFF; /* Синий цвет, как в бренде */
+  background-color: #2d5b2a;
+  /*background-color: #007BFF; *//* Синий цвет, как в бренде */
   color: white;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 500;
@@ -726,4 +730,8 @@ h6 {
 
 #map {
   width: 50%; height: 100%
+}
+
+.floating-call-button {
+  display: none;
 }

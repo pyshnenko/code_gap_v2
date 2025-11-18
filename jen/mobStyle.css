@@ -12,6 +12,7 @@
         display: none;
     }
     .left_page1 {
+        min-width: auto;
         width: 100vw;
     }
     .page1 .textBlock {  
@@ -85,7 +86,9 @@
 .carousel-item {
     padding: 64px 16px;
 }
-
+#page3 button {
+    width: 50%;
+}
 #page5 {
     
   width: 110%;
@@ -117,4 +120,56 @@
   #map {
     width: 100%;
   }
+    .floating-call-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #013831;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Эффект нажатия */
+.floating-call-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Пульсация */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(1, 56, 49, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(1, 56, 49, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(1, 56, 49, 0);
+  }
+}
+
+/* Для маленьких экранов */
+@media (max-width: 480px) {
+  .floating-call-button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
 }
