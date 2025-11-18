@@ -180,7 +180,7 @@
   <div class="page2" id="page7">
     <div class="card column">
       <h3>Запишись на первое бесплатное занятие</h3>
-      <form id="studentForm" class="form" action="http://localhost:3000/newStudent" method="post">
+      <form id="studentForm" class="form" method="post">
         <input 
           type="tel" 
           id="phoneInput" 
@@ -191,9 +191,9 @@
         >
           <select id="courseDropdown" required name="city">
             <option value="" disabled selected>Выберите город</option>
-            <option value="minecraft">Наро-Фоминск</option>
-            <option value="roblox">Обнинск</option>
-            <option value="unity">Селятино</option>
+            <option value="Наро-Фоминск">Наро-Фоминск</option>
+            <option value="Обнинск">Обнинск</option>
+            <option value="Селятино">Селятино</option>
           </select>
           <button type="submit" id="submitBtn">Оставить заявку</button>
         </forms>
@@ -302,8 +302,8 @@
 <script type="importmap">
   {
     "imports": {
-      "three": "https://spamigor.ru/library/threejs/build/three.module.js",
-      "three/addons/": "https://spamigor.ru/library/threejs/examples/jsm/"
+      "three": "/library/threejs/build/three.module.js",
+      "three/addons/": "/library/threejs/examples/jsm/"
     }
   }
 </script>
@@ -840,7 +840,7 @@ document.getElementById('submitBtn').addEventListener('click', async (e) => {
       const data = Object.fromEntries(formData.entries());
 
       try {
-        const response = await fetch('http://localhost:3000/newStudent', {
+        const response = await fetch('/api/newStudent', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
